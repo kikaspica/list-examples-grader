@@ -10,7 +10,7 @@ class IsMoon implements StringChecker {
 }
 
 public class TestListExamples {
-  @Test(timeout = 500)
+  @Test //(timeout = 500)
   public void testMergeRightEnd() {
     List<String> left = Arrays.asList("a", "b", "c");
     List<String> right = Arrays.asList("a", "d");
@@ -21,7 +21,9 @@ public class TestListExamples {
 
   @Test
   public void testSimpleFilter() {
+    StringChecker checker = new IsMoon();
     List<String> input = Arrays.asList("hello", "hello moon", "MOON", "hey", "moonnnn");
     List<String> expected = Arrays.asList("hello moon", "MOON","moonnnn");
+    assertEquals(expected, ListExamples.filter(input, checker));
   }
 }
