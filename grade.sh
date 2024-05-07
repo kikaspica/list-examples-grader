@@ -28,7 +28,7 @@ javac -cp $CPATH ListExamples.java TestListExamples.java
 echo "This is the exit code of javac (previous command): $?."
 
 # Step 5 -- Run the tests and report the grade based on the JUnit output
-
+java -cp $CPATH org.junit.runner.JUnitCore TestListExamples
 
 # Draw a picture/take notes on the directory structure that's set up after
 # getting to this point
