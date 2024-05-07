@@ -14,7 +14,8 @@ if [[ -f student-submission/ListExamples.java ]]; then
 else
     echo "ListExamples.java does not exist"
     echo "Grade: 0"
-    exit
+    exit 1
+fi
 
 # Step 3 -- Put all the relevant files in the grading-area directory
 cp student-submission/ListExamples.java TestListExamples.java grading-area
