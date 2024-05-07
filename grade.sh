@@ -31,17 +31,17 @@ echo "This is the exit code of javac (previous command): $?."
 ## set -e
 ## java -cp $CPATH org.junit.runner.JUnitCore TestListExamples
 ## done
-(exit 1)
-while (($?))
-do
-    java -cp $CPATH org.junit.runner.JUnitCore TestListExamples
-    if [[$? -ne 0]]; then
-        echo "fail"
-    else 
-        echo "pass"
-        exit 1
-    fi
-done
+java -cp $CPATH org.junit.runner.JUnitCore TestListExamples > testOutput.txt
+set -e
+FAIL=$(grep "FAILURES" testOutput.txt)
+if [[$FAIL == "FAILURES"]]
+then
+    tail -n 2 testOutput.txt
+else
+    echo "Tests passed!"
+    exit 1
+fi
+
 # Draw a picture/take notes on the directory structure that's set up after
 # getting to this point
 
